@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import VisitsPage from "./VisitsPage";
 
+=======
+
+import { useHistory } from 'react-router-dom';
+>>>>>>> 06c36221af206d840ea6b9658de8a06a71d89c62
 
 
 
@@ -113,6 +118,7 @@ function Registration() {
         <button type="button" onClick={handleClear}>
           Clear
         </button>
+<<<<<<< HEAD
         { <Link to="/VisitsPage" type="button" >
           visits
         </Link> }
@@ -122,6 +128,9 @@ function Registration() {
         { <Link to="/helathform2" type="button" >
           form2
         </Link> }
+=======
+        
+>>>>>>> 06c36221af206d840ea6b9658de8a06a71d89c62
         
       </form>
       {newPage &&<VisitsPage/>}
