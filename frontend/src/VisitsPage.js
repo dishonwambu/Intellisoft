@@ -26,6 +26,7 @@ function VisitsPage() {
       .then((response) => {
         if (response.ok) {
           alert('Data saved successfully!');
+          
         } else {
           alert(console.error(e));
           

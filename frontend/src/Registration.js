@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from 'react-router-dom';
+import VisitsPage from "./VisitsPage";
+
 
 
 
@@ -9,16 +10,17 @@ function Registration() {
   const [lastName, setLastName] = useState("");
   const [dob, setDob] = useState("");
   const [gender, setGender] = useState("");
+  const[newPage, setNewPage] = useState(false)
 
   const currentDate = new Date().toISOString().slice(0, 10);
 
-  const history = useHistory();
+  
   const handleSubmit = async (event) => {
   event.preventDefault();
   
   // Send form data to backend service
   try {
-    const response = await fetch('/patients', {
+    const response = await fetch('http://localhost:3001/patients', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -44,7 +46,7 @@ function Registration() {
     setLastName("");
     setDob("");
     setGender("");
-    history.push('/visits'); // redirect to Visits Page component
+   setNewPage(true)
 
   } catch (error) {
     console.error(error);
@@ -112,10 +114,17 @@ function Registration() {
           Clear
         </button>
         { <Link to="/VisitsPage" type="button" >
-          NEXT
+          visits
+        </Link> }
+        { <Link to="/healthform1" type="button" >
+          form1
+        </Link> }
+        { <Link to="/helathform2" type="button" >
+          form2
         </Link> }
         
       </form>
+      {newPage &&<VisitsPage/>}
     </div>
   );
 }

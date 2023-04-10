@@ -2,7 +2,7 @@
 const express = require('express'); // Web framework for Node.js
 const mysql = require('mysql'); // MySQL driver for Node.js
 const cors = require('cors'); // Cross-origin resource sharing middleware for Express
-const { default: VisitsPage } = require('../frontend/src/VisitsPage');
+//const { default: VisitsPage } = require('../frontend/src/VisitsPage');
 
 // Create an instance of the Express web framework
 const app = express();
@@ -27,7 +27,7 @@ app.post('/visits', (req, res) => {
   const { date, height, weight, bmi } = req.body;
 
   // Construct the MySQL query to insert the data into the 'visits' table
-  const query = `INSERT INTO visits (Date, Height, Weight, BMI) VALUES ('${date}', ${height}, ${weight}, ${bmi})`;
+  const query = `INSERT INTO visits (date, height, weight, bmi) VALUES ('${date}', ${height}, ${weight}, ${bmi})`;
 
   // Execute the MySQL query and handle any errors
   connection.query(query, (error, results, fields) => {
