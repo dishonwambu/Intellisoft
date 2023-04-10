@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
 import { useHistory } from 'react-router-dom';
 
 
@@ -111,9 +111,7 @@ function Registration() {
         <button type="button" onClick={handleClear}>
           Clear
         </button>
-        { <Link to="/VisitsPage" type="button" >
-          NEXT
-        </Link> }
+        
         
       </form>
     </div>
