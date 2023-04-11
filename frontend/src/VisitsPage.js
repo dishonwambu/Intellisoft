@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import HealthForm1 from './HealthForm1';
+import HealthForm2 from './HealthForm2';
 
+// Set initial states for date, height, weight and bmi
 function VisitsPage() {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [height, setHeight] = useState('');
   const [weight, setWeight] = useState('');
   const [bmi, setBMI] = useState('');
-
+  const [showHealthForm1, setShowHealthForm1] = useState(false);
+  const [showHealthForm2, setShowHealthForm2] = useState(false);
+  
+  // useEffect hook that recalculates BMI whenever height and/or weight changes
   useEffect(() => {
     if (height && weight) {
       const calculatedBMI = (weight / (height * height)).toFixed(2);
@@ -14,7 +20,8 @@ function VisitsPage() {
       setBMI('');
     }
   }, [height, weight]);
-
+  
+  // handleSubmit function that sends the form data to the backend for processing
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = { date, height, weight, bmi };
@@ -26,9 +33,18 @@ function VisitsPage() {
       .then((response) => {
         if (response.ok) {
           alert('Data saved successfully!');
-          
+
+          // Check BMI value and conditionally render HealthForm1 or HealthForm2 component
+        if (bmi < 25) {
+          // Render HealthForm1 component
+          setShowHealthForm1(true);
         } else {
-          alert(console.error(e));
+          // Render HealthForm2 component
+          setShowHealthForm2(true);
+        }
+
+        } else {
+          alert('check on server connection');
           
         }
       })
@@ -74,6 +90,8 @@ function VisitsPage() {
         <br />
         <button type="submit">Save</button>
       </form>
+      {showHealthForm1 && <HealthForm1 />}
+      {showHealthForm2 && <HealthForm2 />}
     </div>
   );
 }

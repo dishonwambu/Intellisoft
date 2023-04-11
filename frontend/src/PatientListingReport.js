@@ -23,6 +23,18 @@ function PatientListingReport() {
   console.log(selectedDate);
   console.log(patients);
 
+  function calculateAge(dateOfBirth) {
+    if (!dateOfBirth) return "failled to get dob"; // return empty string if date of birth is null/undefined
+    const today = new Date();
+    const birthDate = new Date(dateOfBirth);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+    }
+    return age;
+  }
+
   return (
     <div>
       <label htmlFor="date-picker">Select Date:</label>
@@ -47,11 +59,7 @@ function PatientListingReport() {
           {patients.map((patient) => (
             <tr key={patient.id}>
               <td>{`${patient.first_name} ${patient.last_name}`}</td>
-              <td>
-                {Math.floor(
-                  (new Date() - new Date(patient.date_of_birth))
-                )}
-              </td>
+              <td>{calculateAge(patient.dob)}</td>
               <td>
                 {patient.bmi < 18.5
                   ? "Underweight"

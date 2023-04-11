@@ -4,7 +4,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import VisitsPage from './VisitsPage';
 import HealthForm1 from './HealthForm1';
 import HealthForm2 from './HealthForm2';
-import PatientListingReport from './PatientListingReport';
+//import PatientListingReport from './PatientListingReport';
 
 
 function App() {
@@ -22,8 +22,8 @@ function App() {
     
   // </Routes>
   // </BrowserRouter>
-  <PatientListingReport></PatientListingReport>
-  //<VisitsPage></VisitsPage>
+  <VisitsPage></VisitsPage>
+  
   );
 }
 

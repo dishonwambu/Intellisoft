@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import PatientListingReport from "./PatientListingReport";
+
 
 function HealthForm1() {
   const [healthStatus, setHealthStatus] = useState("");
   const [dietHistory, setDietHistory] = useState("");
   const [comments, setComments] = useState("");
-
+  const [showPatientListingReport, setShowPatientListingReport] = useState(false);
+  
   const handleHealthChange = (event) => {
     setHealthStatus(event.target.value);
   };
@@ -21,6 +24,7 @@ function HealthForm1() {
     event.preventDefault();
     // TODO: Submit form data to backend API
     // and handle any errors or success messages
+    setShowPatientListingReport(true);
   };
 
   return (
@@ -77,7 +81,9 @@ function HealthForm1() {
         </div>
         <button type="submit">Submit</button>
       </form>
+      {showPatientListingReport && <PatientListingReport />}
     </div>
+    
   );
 }
 
