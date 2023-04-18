@@ -11,7 +11,7 @@ function PatientListingReport() {
 
     // Fetch patients data from API endpoint
     axios
-      .get(`/patients?date=${formattedDate}`)
+      .get(`http://localhost:3001/patients?date=${formattedDate}`)
       .then((response) => {
         setPatients(response.data);
       })
@@ -37,6 +37,7 @@ function PatientListingReport() {
 
   return (
     <div>
+      <h1>Patient Report</h1>
       <label htmlFor="date-picker">Select Date:</label>
       <input
         type="date"

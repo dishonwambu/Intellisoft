@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import PatientListingReport from "./PatientListingReport";
-
-
+    
 function HealthForm2() {
   const [healthStatus, setHealthStatus] = useState("");
   const [dietHistory, setDietHistory] = useState("");
@@ -27,11 +26,18 @@ function HealthForm2() {
     setShowPatientListingReport(true);
   };
 
+  
+
   return (
     <div>
-      <h1>Health Form</h1>
+      {showPatientListingReport ? (
+        <PatientListingReport />
+      ) : (
+
       <form onSubmit={handleSubmit}>
+        <h1>Health Form</h1>
         <div>
+        
           <label>General Health:</label>
           <br />
           <input
@@ -81,7 +87,7 @@ function HealthForm2() {
         </div>
         <button type="submit">Submit</button>
       </form>
-      {showPatientListingReport && <PatientListingReport />}
+      )}
     </div>
   );
 }

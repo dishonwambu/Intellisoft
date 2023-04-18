@@ -1,11 +1,8 @@
 {
     "scripts": {
         "test": "echo \"error: no test specified\" && exit 1",
-        "startt": "nodemon server.js",
-        "start": "nodemon visits.js",
-        "startt": "nodemon reporting.js",
+        "start": "nodemon server.js"
         
-        "start-all": "concurrently \"npm start server\" \"npm start visits\" \"npm start reporting\""
       },
       
     "keywords": [],

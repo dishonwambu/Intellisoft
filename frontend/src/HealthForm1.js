@@ -29,9 +29,13 @@ function HealthForm1() {
 
   return (
     <div>
-      <h1>Health Form</h1>
+       {showPatientListingReport ? (
+        <PatientListingReport />
+      ) : (
+
       <form onSubmit={handleSubmit}>
         <div>
+        <h1>Health Form</h1>
           <label>General Health:</label>
           <br />
           <input
@@ -81,7 +85,7 @@ function HealthForm1() {
         </div>
         <button type="submit">Submit</button>
       </form>
-      {showPatientListingReport && <PatientListingReport />}
+      )}
     </div>
     
   );
